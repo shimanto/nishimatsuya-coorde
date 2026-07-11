@@ -1,0 +1,19 @@
+{
+  "name": "nishimatsuya-coorde",
+  "version": "2.0.0",
+  "description": "西松屋オンラインの在庫から「きょうだいお揃いTシャツ」と「税込¥1,000以下パンツ・スパッツ」を毎朝8時にCloudflare cronで自動更新・公開",
+  "scripts": {
+    "build": "node scripts/build-local.mjs",
+    "verify": "node scripts/verify.mjs",
+    "deploy:pages": "npx wrangler pages deploy --commit-dirty=true --branch main",
+    "deploy:worker": "npx wrangler deploy -c worker/wrangler.toml",
+    "deploy": "node scripts/build-local.mjs && npm run deploy:pages && npm run deploy:worker"
+  },
+  "keywords": ["nishimatsuya", "cloudflare-workers", "cloudflare-pages", "kids-fashion"],
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.60.0",
+    "qrcode": "^1.5.4"
+  }
+}

@@ -1,0 +1,28 @@
+# 毎朝 8:00 JST (= 23:00 UTC) 更新 Worker — Durable Object Alarm 駆動
+#
+# 無料プランの cron trigger 上限 (アカウント全体で5個) を既存プロジェクトが
+# 使用中のため、cron trigger の代わりに DO Alarm で毎日実行する。
+# DO Alarm は cron 枠を消費せず、CPU 30 秒まで許容 (無料 Worker の 10ms 制限を回避)。
+#
+# デプロイ後に1回だけ: POST https://<worker>/init?token=<ADMIN_TOKEN> で Alarm を起動。
+# ADMIN_TOKEN は `wrangler secret put ADMIN_TOKEN -c worker/wrangler.toml` で設定。
+name = "nishimatsuya-coorde-cron"
+main = "index.mjs"
+compatibility_date = "2026-06-01"
+
+[[kv_namespaces]]
+binding = "COORDE_KV"
+id = "cab4b705a9404b2baddc8844cfe1629c"
+
+[[durable_objects.bindings]]
+name = "SCHEDULER"
+class_name = "CoordeScheduler"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CoordeScheduler"]
+
+[vars]
+# 1 invocation あたりの外部 fetch 予算。無料プラン=50 subrequests/invocation を考慮した安全値。
+# 有料プランなら 800 などに上げると 1 tick でほぼ完走する。
+MAX_FETCH_PER_TICK = "40"

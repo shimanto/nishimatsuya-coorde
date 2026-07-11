@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西松屋 きょうだいお揃いコーデ｜80〜140cm同デザインTシャツ＆¥1,000以下パンツ・スパッツ</title>
+<meta name="description" content="西松屋オンラインの在庫から毎朝8時に自動更新。ベビー〜キッズ(80〜140cm)を同じデザインで揃えられるTシャツと、税込¥1,000以下の激安パンツ・スパッツを一覧比較。">
+<link rel="canonical" href="https://nishimatsuya-coorde.pages.dev/">
+<link rel="alternate" type="application/rss+xml" title="毎朝8時の更新フィード" href="/api/feed.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="西松屋 きょうだいお揃いコーデ＆¥1,000以下パンツ・スパッツ">
+<meta property="og:description" content="毎朝8時自動更新。80〜140cmお揃いTシャツと税込¥1,000以下の激安ボトムスを在庫サイズ付きで一覧。">
+<meta property="og:url" content="https://nishimatsuya-coorde.pages.dev/">
+<meta property="og:image" content="https://nishimatsuya-coorde.pages.dev/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script src="config.js"></script>
+<style>
+  :root{
+    --bg:#fafaf7; --card:#fff; --ink:#2b2b2b; --sub:#888; --line:#ececec;
+    --boys:#3b82f6; --girls:#ec4899; --unisex:#10b981; --accent:#ff7a59;
+    --ok:#fff4ef; --okline:#ffd8c9; --full:#16a34a; --gap:#f59e0b;
+    --out:#eee; --outline:#dcdcdc; --outink:#999; --sale:#e11d48;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,system-ui,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  header{background:linear-gradient(135deg,#ff9a76,#ff7a59);color:#fff;padding:22px 16px 0;text-align:center}
+  header h1{margin:0;font-size:1.35rem;letter-spacing:.02em}
+  header .lead{margin:6px auto 14px;font-size:.82rem;opacity:.95;max-width:640px}
+  .share{display:flex;gap:8px;justify-content:center;margin:0 0 14px}
+  .share a{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);color:#fff;
+    border:1px solid rgba(255,255,255,.45);padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;text-decoration:none}
+  .share a:hover{background:rgba(255,255,255,.3)}
+  /* ---- タブ ---- */
+  .tabs{display:flex;max-width:720px;margin:0 auto;gap:4px;padding:0 8px}
+  .tabs button{flex:1;border:none;border-radius:12px 12px 0 0;padding:10px 6px 9px;font-size:.8rem;font-weight:800;
+    cursor:pointer;background:rgba(255,255,255,.22);color:#fff;line-height:1.3;transition:.15s}
+  .tabs button small{display:block;font-size:.6rem;font-weight:600;opacity:.85}
+  .tabs button.active{background:var(--bg);color:var(--ink)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 14px 64px}
+  .toolbar{position:sticky;top:0;z-index:20;background:var(--bg);
+           padding:12px 0 10px;border-bottom:1px solid var(--line);margin-bottom:14px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .filters button{border:1.5px solid var(--line);background:#fff;color:var(--ink);
+    padding:6px 14px;border-radius:999px;font-size:.82rem;cursor:pointer;transition:.15s;font-weight:600}
+  .filters button:hover{border-color:#ccc}
+  .filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .filters select{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:600}
+  .switchline{display:flex;justify-content:center;margin-top:8px}
+  .switchline label{font-size:.78rem;color:#555;cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}
+  .meta{text-align:center;font-size:.72rem;color:var(--sub);margin-top:8px}
+  .legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.7rem;color:#666;margin:8px 0 0}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .lg{width:15px;height:15px;border-radius:5px;display:inline-block;border:1.5px solid}
+  .lg-in{background:var(--ok);border-color:var(--okline)} .lg-off{background:#fafafa;border-color:var(--line)}
+  /* ---- Tシャツカード ---- */
+  .grid{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+        display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .card.gap{border-color:#fde8c4}
+  .card-top{display:flex;gap:14px;padding:14px}
+  .thumb{width:120px;height:120px;flex:0 0 120px;border-radius:12px;object-fit:cover;background:#f0f0f0;border:1px solid var(--line)}
+  .info{min-width:0;flex:1}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+  .badge{font-size:.66rem;font-weight:700;padding:2px 9px;border-radius:999px;color:#fff}
+  .b-boys{background:var(--boys)} .b-girls{background:var(--girls)} .b-unisex{background:var(--unisex)}
+  .b-brand{background:#f3f3f3;color:#777;font-weight:600}
+  .b-full{background:var(--full)} .b-gap{background:var(--gap)} .b-sale{background:var(--sale)}
+  .title{font-size:.98rem;font-weight:700;margin:2px 0 4px;line-height:1.35}
+  .price{font-size:1.05rem;font-weight:800;color:var(--accent)}
+  .price small{font-size:.7rem;color:var(--sub);font-weight:600}
+  .colors{font-size:.7rem;color:var(--sub);margin-top:4px;line-height:1.5}
+  .sizes{padding:4px 10px 10px}
+  .sizes-label{font-size:.68rem;color:var(--sub);margin:4px 2px 6px;font-weight:600}
+  .size-row{display:flex;gap:3px}
+  .size-cell{flex:1 1 0;min-width:0;text-align:center;border-radius:8px;padding:6px 1px;
+    border:1.5px solid var(--line);background:#fafafa;color:#bbb;position:relative;overflow:hidden}
+  .size-cell.on{background:var(--ok);border-color:var(--okline);color:var(--accent);font-weight:700;
+    text-decoration:none;cursor:pointer;transition:.12s}
+  .size-cell.on:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(255,122,89,.25)}
+  .size-cm{font-size:.7rem;font-weight:800;display:block;line-height:1.15}
+  .size-tag{font-size:.55rem;display:block;line-height:1.2;white-space:nowrap}
+  @media(min-width:520px){
+    .size-row{gap:5px} .size-cell{padding:7px 3px;border-radius:10px}
+    .size-cm{font-size:.8rem} .size-tag{font-size:.62rem}
+  }
+  .gapnote{font-size:.7rem;color:#b9791a;background:#fff8ec;border:1px solid #fce3b4;
+    border-radius:8px;padding:4px 9px;margin:6px 2px 0}
+  .empty{grid-column:1/-1;text-align:center;color:var(--sub);padding:60px 0}
+  /* ---- アフィリエイトボタン ---- */
+  .aff{display:flex;gap:6px;padding:0 10px 12px;flex-wrap:wrap}
+  .aff a{font-size:.68rem;font-weight:700;text-decoration:none;border-radius:8px;padding:4px 10px;border:1.5px solid}
+  .aff .rk{color:#bf0000;border-color:#f3c1c1;background:#fff5f5}
+  .aff .az{color:#b45309;border-color:#f0d9b5;background:#fffaf0}
+  .aff a:hover{filter:brightness(.96)}
+  /* ---- ¥1000以下 ミニカード ---- */
+  .cheap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(min-width:560px){.cheap-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:860px){.cheap-grid{grid-template-columns:repeat(4,1fr)}}
+  .c-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.12s}
+  .c-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-2px)}
+  .c-card>a{text-decoration:none;color:inherit;display:flex;flex-direction:column;flex:1}
+  .c-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f3f3f3}
+  .c-body{padding:8px 10px 6px;flex:1;display:flex;flex-direction:column}
+  .c-badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:3px}
+  .c-badges .badge{font-size:.58rem;padding:1px 7px}
+  .c-name{font-size:.74rem;font-weight:600;line-height:1.35;height:2.7em;overflow:hidden;margin-bottom:3px}
+  .c-price{font-size:1.05rem;font-weight:800;color:var(--sale)}
+  .c-price small{font-size:.62rem;color:var(--sub);font-weight:600}
+  .c-sizes{font-size:.62rem;color:var(--sub);margin-top:2px;line-height:1.4}
+  /* ---- 他ブランド ---- */
+  .section-head{font-size:1.05rem;font-weight:800;margin:20px 2px 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .section-head .sub{font-size:.72rem;font-weight:600;color:var(--sub)}
+  .uq-corner{border:2px solid #e60012;border-radius:16px;background:#fff;overflow:hidden;margin-bottom:8px}
+  .uq-flag{background:#e60012;color:#fff;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:6px}
+  .b-uq{background:#e60012}
+  .uq-price{font-size:1.2rem;font-weight:800;color:#e60012}
+  .uq-note{font-size:.7rem;color:var(--sub);padding:0 14px 12px}
+  .brand-corner{margin-bottom:14px}
+  .brand-head{display:flex;align-items:center;gap:8px;font-size:1rem;font-weight:800;margin:16px 2px 8px}
+  .brand-chip{color:#fff;font-size:.75rem;font-weight:800;padding:3px 11px;border-radius:6px}
+  .brand-note{font-size:.7rem;font-weight:600;color:var(--sub)}
+  .item-scroll{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 8px;-webkit-overflow-scrolling:touch}
+  .mini-card{flex:0 0 150px;width:150px;border:1px solid var(--line);border-radius:12px;background:#fff;
+    overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.12s}
+  .mini-card:hover{box-shadow:0 3px 10px rgba(0,0,0,.1);transform:translateY(-2px)}
+  .mini-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#f3f3f3}
+  .mini-body{padding:7px 9px 10px}
+  .mini-name{font-size:.72rem;font-weight:600;line-height:1.3;height:2.6em;overflow:hidden;margin-bottom:4px}
+  .mini-price{font-size:.95rem;font-weight:800;color:#e60012}
+  .mini-old{font-size:.68rem;color:#aaa;text-decoration:line-through;margin-left:4px;font-weight:600}
+  .mini-sale{font-size:.6rem;font-weight:800;color:#fff;background:#e60012;border-radius:4px;padding:1px 5px;display:inline-block;margin-bottom:3px}
+  .mini-size{font-size:.62rem;color:var(--sub);margin-top:3px}
+  /* ---- 応援ブロック ---- */
+  .support{margin:26px 0 0;background:#fff;border:1.5px dashed var(--okline);border-radius:16px;padding:16px;text-align:center}
+  .support h2{margin:0 0 6px;font-size:.95rem}
+  .support p{margin:0 0 10px;font-size:.75rem;color:var(--sub)}
+  .support .btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .support a{display:inline-block;padding:8px 18px;border-radius:999px;font-size:.8rem;font-weight:800;text-decoration:none;color:#fff}
+  .s-sub{background:#635bff} .s-tip{background:var(--accent)} .s-line{background:#06c755}
+  footer{text-align:center;font-size:.72rem;color:var(--sub);padding:24px 16px 40px;border-top:1px solid var(--line)}
+  footer a{color:var(--accent);text-decoration:none}
+  .tabpane{display:none} .tabpane.active{display:block}
+</style>
+</head>
+<body>
+<header>
+  <h1>👕 西松屋 きょうだいお揃いコーデ</h1>
+  <p class="lead">同じデザイン×80〜140cmで揃うTシャツと、<b>税込¥1,000以下のパンツ・スパッツ</b>を毎朝8時に自動更新</p>
+  <div class="share">
+    <a id="shareX" href="#" target="_blank" rel="noopener">𝕏 ポスト</a>
+    <a id="shareLine" href="#" target="_blank" rel="noopener">💬 LINEで送る</a>
+    <a href="/api/feed.xml" target="_blank" rel="noopener">📡 RSS</a>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="コンテンツ切替">
+    <button data-tab="tshirt" class="active">👕 お揃いTシャツ<small>80〜140cm</small></button>
+    <button data-tab="cheap">👖 パンツ・スパッツ<small>税込¥1,000以下</small></button>
+    <button data-tab="brands">🛍 他ブランド<small>セール情報</small></button>
+  </nav>
+</header>
+<div class="wrap">
+
+  <!-- ============ タブ1: お揃いTシャツ ============ -->
+  <section class="tabpane active" id="pane-tshirt">
+    <div class="toolbar">
+      <div class="filters" id="tshirtFilters">
+        <button data-g="all" class="active">すべて</button>
+        <button data-g="boys">👦 男の子</button>
+        <button data-g="unisex">🧒 男女兼用</button>
+        <button data-g="girls">👧 女の子</button>
+      </div>
+      <div class="switchline">
+        <label><input type="checkbox" id="fullOnly"> ✅ 80〜130cm全サイズ在庫のみ表示</label>
+      </div>
+      <div class="legend">
+        <span><i class="lg lg-in"></i>在庫あり（ベ=ベビー/キ=キッズ/ス=スクール）</span>
+        <span><i class="lg lg-off"></i>– 在庫なし/展開なし</span>
+      </div>
+      <div class="meta" id="tshirtMeta"></div>
+    </div>
+    <div class="grid" id="tshirtGrid"><div class="empty">読み込み中…</div></div>
+  </section>
+
+  <!-- ============ タブ2: ¥1,000以下 パンツ・スパッツ ============ -->
+  <section class="tabpane" id="pane-cheap">
+    <div class="toolbar">
+      <div class="filters" id="cheapKind">
+        <button data-k="all" class="active">すべて</button>
+        <button data-k="pants">👖 パンツ</button>
+        <button data-k="spats">🩳 スパッツ・レギンス</button>
+      </div>
+      <div class="filters" style="margin-top:8px" id="cheapGender">
+        <button data-g="all" class="active">性別: すべて</button>
+        <button data-g="boys">👦</button>
+        <button data-g="unisex">🧒</button>
+        <button data-g="girls">👧</button>
+        <select id="cheapSize"><option value="">サイズ指定なし</option></select>
+      </div>
+      <div class="meta" id="cheapMeta"></div>
+    </div>
+    <div class="cheap-grid" id="cheapGrid"><div class="empty">読み込み中…</div></div>
+  </section>
+
+  <!-- ============ タブ3: 他ブランド ============ -->
+  <section class="tabpane" id="pane-brands">
+    <div class="toolbar"><div class="meta">ユニクロ・H&M・ZARA・ヒラキ・GAPのキッズセールを自動巡回（毎朝更新）</div></div>
+    <section id="uniqloCorner"></section>
+    <section id="otherCorners"><div class="empty">読み込み中…</div></section>
+  </section>
+
+  <div id="supportBlock"></div>
+</div>
+
+<noscript>
+  <div style="max-width:640px;margin:20px auto;padding:16px;font-size:.9rem">
+    このページは西松屋オンラインストアの在庫データから、80〜140cmを同じデザインで揃えられるTシャツと
+    税込¥1,000以下のパンツ・スパッツを毎朝8時に自動集計して掲載しています。表示にはJavaScriptが必要です。
+  </div>
+</noscript>
+
+<footer>
+  データ出典: <a href="https://www.24028-net.jp/" target="_blank" rel="noopener">西松屋オンラインストア</a> ほか各ブランド公式サイト（取得時点の情報です。価格・在庫は購入前に各商品ページでご確認ください）<br>
+  本サイトは非公式の個人プロジェクトです。毎朝8時(JST)にCloudflare上で自動更新。
+  <a href="https://github.com/shimanto/nishimatsuya-coorde" target="_blank" rel="noopener">GitHub(オープンソース)</a>
+  ／ 一部リンクはアフィリエイトリンクになる場合があります。
+</footer>
+
+<script>
+const CFG = window.SITE_CONFIG || {affiliate:{},support:{},analytics:{}};
+const GENDER = {boys:{cls:'b-boys',label:'👦 男の子'},girls:{cls:'b-girls',label:'👧 女の子'},unisex:{cls:'b-unisex',label:'🧒 男女兼用'}};
+const FRONT = {BABY:'ベビー',KIDS:'キッズ',SCHOOL:'スクール'};
+const FRONT_S = {BABY:'ベ',KIDS:'キ',SCHOOL:'ス'};
+const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const fmtYen = n => '¥' + Number(n).toLocaleString();
+const fmtDate = s => (s||'').replace('T',' ').slice(0,16);
+
+// ---- データ読込: /api/ (KV最新) → 静的ファイル の順でフォールバック ----
+async function loadJson(name){
+  for (const u of ['/api/' + name, name]) {
+    try {
+      const r = await fetch(u + (u.startsWith('/api/') ? '' : '?v=' + Date.now()));
+      if (r.ok) return await r.json();
+    } catch(e){}
+  }
+  throw new Error(name + ' の読込に失敗しました');
+}
+
+// ---- アフィリエイトリンク ----
+function rakutenLink(query){
+  const target = 'https://search.rakuten.co.jp/search/mall/' + encodeURIComponent(query) + '/';
+  const id = CFG.affiliate && CFG.affiliate.rakutenAffiliateId;
+  if (!id) return target;
+  return 'https://hb.afl.rakuten.co.jp/hgc/' + encodeURIComponent(id) + '/?pc=' +
+    encodeURIComponent(target) + '&m=' + encodeURIComponent(target);
+}
+function amazonLink(query){
+  const tag = CFG.affiliate && CFG.affiliate.amazonTag;
+  return 'https://www.amazon.co.jp/s?k=' + encodeURIComponent(query) + (tag ? '&tag=' + encodeURIComponent(tag) : '');
+}
+function affButtons(query){
+  return `<div class="aff">
+    <a class="rk" href="${esc(rakutenLink(query))}" target="_blank" rel="noopener nofollow sponsored">🅁 楽天で探す</a>
+    <a class="az" href="${esc(amazonLink(query))}" target="_blank" rel="noopener nofollow sponsored">ⓐ Amazonで探す</a>
+  </div>`;
+}
+
+// ---- タブ切替 (パスルーティング: / , /cheap , /brands) ----
+const TAB_PATH = {tshirt:'/', cheap:'/cheap', brands:'/brands'};
+const TAB_SEO = {
+  tshirt: {title:'西松屋 きょうだいお揃いコーデ｜80〜140cm同デザインTシャツ',
+           desc:'西松屋オンラインの在庫から毎朝8時自動更新。ベビー〜キッズ(80〜140cm)を同じデザインで揃えられるTシャツを在庫サイズ付きで一覧。'},
+  cheap:  {title:'西松屋 税込¥1,000以下のパンツ・スパッツ一覧｜毎朝8時更新',
+           desc:'西松屋オンラインで今買える税込¥1,000以下のパンツ・スパッツ・レギンスを安い順に一覧。在庫サイズ・性別で絞り込み可能。毎朝8時自動更新。'},
+  brands: {title:'キッズ服セール横断チェック｜ユニクロ・H&M・ZARA・ヒラキ・GAP',
+           desc:'ユニクロ・H&M・ZARA・ヒラキ・GAPのキッズTシャツセールを毎朝自動巡回。西松屋との価格比較に。'},
+};
+let currentTab = 'tshirt';
+function switchTab(tab, push){
+  if (!TAB_PATH[tab]) tab = 'tshirt';
+  currentTab = tab;
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tabpane').forEach(p => p.classList.toggle('active', p.id === 'pane-' + tab));
+  const seo = TAB_SEO[tab];
+  document.title = seo.title;
+  document.querySelector('meta[name="description"]').setAttribute('content', seo.desc);
+  const canon = (CFG.siteUrl || location.origin + '/').replace(/\/$/,'') + TAB_PATH[tab];
+  document.querySelector('link[rel="canonical"]').setAttribute('href', canon);
+  updateShare();
+  try { localStorage.setItem('tab', tab); } catch(e){}
+  if (push && location.protocol.startsWith('http') && location.pathname !== TAB_PATH[tab]) {
+    history.pushState({tab}, '', TAB_PATH[tab]);
+  }
+}
+document.getElementById('tabs').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (b) switchTab(b.dataset.tab, true);
+});
+window.addEventListener('popstate', () => switchTab(pathToTab(location.pathname), false));
+function pathToTab(p){
+  if (p.startsWith('/cheap')) return 'cheap';
+  if (p.startsWith('/brands')) return 'brands';
+  return 'tshirt';
+}
+
+// ---- シェア ----
+function updateShare(){
+  const url = (CFG.siteUrl || location.origin + '/').replace(/\/$/,'') + TAB_PATH[currentTab];
+  const text = TAB_SEO[currentTab].title + ' #西松屋 #西松屋購入品';
+  document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+  document.getElementById('shareLine').href = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url);
+}
+
+// ============ タブ1: Tシャツ ============
+let TDATA = null, tFilter = 'all', fullOnly = false;
+function sizeCell(cm, d){
+  const s = d.sizeMap[String(cm)] || {state:'off'};
+  if (s.state === 'in') {
+    return `<a class="size-cell on" href="${esc(s.url)}" target="_blank" rel="noopener" title="${cm}cm 在庫あり（${FRONT[s.front]||''}）">
+      <span class="size-cm">${cm}</span><span class="size-tag">${FRONT_S[s.front]||'有'}</span></a>`;
+  }
+  return `<div class="size-cell" title="${cm}cm は在庫なし/展開なし"><span class="size-cm">${cm}</span><span class="size-tag">–</span></div>`;
+}
+function tshirtCard(d){
+  const g = GENDER[d.gender];
+  const brand = d.brand ? `<span class="badge b-brand">${esc(d.brand)}</span>` : '';
+  const sale = d.saleNote ? `<span class="badge b-sale">🏷 ${esc(d.saleNote)}</span>` : '';
+  const stockBadge = d.isFull
+    ? '<span class="badge b-full">✅ 80〜130cm全在庫</span>'
+    : '<span class="badge b-gap">⚠️ 一部サイズなし</span>';
+  const sizes = TDATA.displaySizes.map(cm => sizeCell(cm, d)).join('');
+  const gapnote = d.gaps && d.gaps.length
+    ? `<div class="gapnote">⚠️ ${d.gaps.join('・')}cm は現在ありません（在庫切れ/展開なし）</div>` : '';
+  const price = d.priceMin == null ? '' :
+    (d.priceMin === d.priceMax ? fmtYen(d.priceMin) : fmtYen(d.priceMin) + '〜' + fmtYen(d.priceMax));
+  return `<div class="card ${d.isFull?'':'gap'}">
+    <div class="card-top">
+      <img class="thumb" src="${esc(d.image)}" alt="${esc(d.title)}" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div class="info">
+        <div class="badges"><span class="badge ${g.cls}">${g.label}</span>${stockBadge}${sale}${brand}</div>
+        <div class="title">${esc(d.title)}</div>
+        <div class="price">${price} <small>税込</small></div>
+        <div class="colors">🎨 ${d.colors.map(esc).join('・')}</div>
+      </div>
+    </div>
+    <div class="sizes">
+      <div class="sizes-label">サイズ別 在庫（タップで商品ページへ）</div>
+      <div class="size-row">${sizes}</div>
+      ${gapnote}
+    </div>
+    ${affButtons('西松屋 ' + d.title)}
+  </div>`;
+}
+function renderTshirt(){
+  if (!TDATA) return;
+  const grid = document.getElementById('tshirtGrid');
+  let list = TDATA.designs.filter(d => tFilter === 'all' || d.gender === tFilter);
+  if (fullOnly) list = list.filter(d => d.isFull);
+  grid.innerHTML = list.length ? list.map(tshirtCard).join('') : '<div class="empty">該当するデザインがありません</div>';
+  document.getElementById('tshirtMeta').textContent =
+    `${list.length}デザイン表示中 ／ 全${TDATA.totalDesigns}（✅全在庫 ${TDATA.fullCount}・⚠️一部なし ${TDATA.gapCount}）・更新: ${fmtDate(TDATA.generatedAt)}`;
+}
+document.getElementById('tshirtFilters').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  tFilter = b.dataset.g;
+  [...document.querySelectorAll('#tshirtFilters button')].forEach(x => x.classList.toggle('active', x === b));
+  renderTshirt();
+});
+document.getElementById('fullOnly').addEventListener('change', e => { fullOnly = e.target.checked; renderTshirt(); });
+
+// ============ タブ2: ¥1,000以下 ============
+let CDATA = null, cKind = 'all', cGender = 'all', cSize = '';
+function cheapCard(it){
+  const g = GENDER[it.gender];
+  const kind = it.kind === 'spats' ? '🩳 スパッツ' : '👖 パンツ';
+  const sale = it.saleNote ? `<span class="badge b-sale">🏷 ${esc(it.saleNote)}</span>` : '';
+  return `<div class="c-card">
+    <a href="${esc(it.url)}" target="_blank" rel="noopener">
+      <img class="c-img" src="${esc(it.image)}" alt="${esc(it.title)}" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div class="c-body">
+        <div class="c-badges"><span class="badge ${g.cls}">${g.label.slice(0,2)}</span><span class="badge b-brand">${kind}</span>${sale}</div>
+        <div class="c-name">${esc(it.title)}</div>
+        <div class="c-price">${fmtYen(it.price)} <small>税込</small></div>
+        <div class="c-sizes">📏 ${it.sizes.join('/')}cm<br>🎨 ${it.colors.length}色</div>
+      </div>
+    </a>
+    ${affButtons('西松屋 ' + it.title)}
+  </div>`;
+}
+function renderCheap(){
+  if (!CDATA) return;
+  let list = CDATA.items;
+  if (cKind !== 'all') list = list.filter(i => i.kind === cKind);
+  if (cGender !== 'all') list = list.filter(i => i.gender === cGender);
+  if (cSize) list = list.filter(i => i.sizes.includes(Number(cSize)));
+  const grid = document.getElementById('cheapGrid');
+  grid.innerHTML = list.length ? list.map(cheapCard).join('') : '<div class="empty">該当する商品がありません</div>';
+  document.getElementById('cheapMeta').textContent =
+    `${list.length}件表示中（安い順） ／ 全${CDATA.totalItems}件: パンツ${CDATA.pantsCount}・スパッツ${CDATA.spatsCount} ／ 税込¥${CDATA.maxPrice.toLocaleString()}以下 ・更新: ${fmtDate(CDATA.generatedAt)}`;
+}
+document.getElementById('cheapKind').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  cKind = b.dataset.k;
+  [...document.querySelectorAll('#cheapKind button')].forEach(x => x.classList.toggle('active', x === b));
+  renderCheap();
+});
+document.getElementById('cheapGender').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  cGender = b.dataset.g;
+  [...document.querySelectorAll('#cheapGender button')].forEach(x => x.classList.toggle('active', x === b));
+  renderCheap();
+});
+document.getElementById('cheapSize').addEventListener('change', e => { cSize = e.target.value; renderCheap(); });
+
+// ============ タブ3: 他ブランド ============
+const proxyImg = u => u && u.startsWith('http') ? '/api/img?u=' + encodeURIComponent(u) : u;
+function uqSizeCell(cm, s){
+  if (s.sizeState[String(cm)] === 'in')
+    return `<a class="size-cell on" href="${esc(s.url)}" target="_blank" rel="noopener"><span class="size-cm">${cm}</span><span class="size-tag">在庫</span></a>`;
+  return `<div class="size-cell"><span class="size-cm">${cm}</span><span class="size-tag">–</span></div>`;
+}
+function renderUniqlo(j){
+  const s = j.sample; if (!s) return;
+  document.getElementById('uniqloCorner').innerHTML = `
+    <div class="section-head">🔴 ユニクロ <span class="sub">セール品サンプル（自動選定）</span></div>
+    <div class="uq-corner">
+      <div class="card-top">
+        <img class="thumb" src="${esc(s.image)}" alt="${esc(s.name)}" loading="lazy" onerror="this.style.visibility='hidden'">
+        <div class="info">
+          <div class="badges"><span class="badge b-uq">UNIQLO</span><span class="uq-flag">🏷️ ${esc(s.saleLabel)}</span></div>
+          <div class="title">${esc(s.name)}</div>
+          <div class="uq-price">${fmtYen(s.price)} <small style="font-size:.65rem;color:#888;font-weight:600">税込・期間限定価格</small></div>
+          <div class="colors">${esc(s.genderName||'KIDS')} ／ ${s.colorCount}色展開</div>
+        </div>
+      </div>
+      <div class="sizes"><div class="sizes-label">サイズ別 在庫（タップで商品ページへ）</div>
+        <div class="size-row">${s.displaySizes.map(cm => uqSizeCell(cm, s)).join('')}</div></div>
+      <div class="uq-note">※ ユニクロは100〜160cm中心（西松屋とサイズ基準が異なります）</div>
+    </div>`;
+}
+function miniCard(it){
+  const old = it.oldPrice ? `<span class="mini-old">${fmtYen(it.oldPrice)}</span>` : '';
+  const price = it.price != null ? `<div class="mini-price">${fmtYen(it.price)}${old}</div>`
+    : `<div class="mini-price" style="font-size:.72rem;color:#888">価格は商品ページで</div>`;
+  const img = it.image && it.image.startsWith('http') ? proxyImg(it.image) : it.image; // 旧cimg形式にも対応
+  return `<a class="mini-card" href="${esc(it.url)}" target="_blank" rel="noopener">
+    <img class="mini-img" src="${esc(img)}" alt="${esc(it.name)}" loading="lazy"
+         onerror="if(!this.dataset.f){this.dataset.f=1;this.src='${esc(it.image)}'}else{this.style.visibility='hidden'}">
+    <div class="mini-body">
+      <span class="mini-sale">${esc(it.saleLabel)}</span>
+      <div class="mini-name">${esc(it.name)}</div>
+      ${price}${it.sizes ? `<div class="mini-size">${esc(it.sizes)}</div>` : ''}
+    </div></a>`;
+}
+function renderCorners(j){
+  const el = document.getElementById('otherCorners');
+  el.innerHTML = (j.corners || []).map(c => `
+    <div class="brand-corner">
+      <div class="brand-head"><span class="brand-chip" style="background:${esc(c.accent)}">${esc(c.brand)}</span>
+        <span class="brand-note">${esc(c.note)}</span></div>
+      <div class="item-scroll">${c.items.map(miniCard).join('')}</div>
+    </div>`).join('') || '<div class="empty">本日のセール情報は取得できませんでした</div>';
+}
+
+// ============ 応援・購読ブロック ============
+function renderSupport(){
+  const s = CFG.support || {};
+  const btns = [];
+  if (s.stripeSubscribeUrl) btns.push(`<a class="s-sub" href="${esc(s.stripeSubscribeUrl)}" target="_blank" rel="noopener">💜 月額サポーターになる</a>`);
+  if (s.tipUrl) btns.push(`<a class="s-tip" href="${esc(s.tipUrl)}" target="_blank" rel="noopener">☕ 開発を応援する</a>`);
+  if (s.lineOfficialUrl) btns.push(`<a class="s-line" href="${esc(s.lineOfficialUrl)}" target="_blank" rel="noopener">💬 LINEで毎朝の更新を受け取る</a>`);
+  if (!btns.length) return;
+  document.getElementById('supportBlock').innerHTML = `
+    <div class="support">
+      <h2>🧡 このサイトが役に立ったら</h2>
+      <p>毎朝の自動更新はサーバー代と開発時間で成り立っています。応援いただけると更新が続きます！</p>
+      <div class="btns">${btns.join('')}</div>
+    </div>`;
+}
+
+// ============ SEO: JSON-LD ============
+function injectJsonLd(){
+  const graph = [{
+    '@type': 'WebSite',
+    name: CFG.siteName || document.title,
+    url: CFG.siteUrl || location.origin + '/',
+  }];
+  if (CDATA) {
+    graph.push({
+      '@type': 'ItemList',
+      name: '西松屋 税込¥1,000以下のパンツ・スパッツ（毎朝8時更新）',
+      numberOfItems: Math.min(CDATA.items.length, 10),
+      itemListElement: CDATA.items.slice(0, 10).map((it, i) => ({
+        '@type': 'ListItem', position: i + 1,
+        item: {
+          '@type': 'Product', name: it.title, image: it.image, url: it.url,
+          brand: {'@type':'Brand', name: '西松屋'},
+          offers: {'@type':'Offer', price: String(it.price), priceCurrency: 'JPY',
+                   availability: 'https://schema.org/InStock', url: it.url},
+        },
+      })),
+    });
+  }
+  const el = document.createElement('script');
+  el.type = 'application/ld+json';
+  el.textContent = JSON.stringify({'@context':'https://schema.org','@graph':graph});
+  document.head.appendChild(el);
+}
+
+// ============ 計測タグ (config.js で有効化) ============
+function injectAnalytics(){
+  const a = CFG.analytics || {};
+  if (a.cloudflareBeaconToken) {
+    const s = document.createElement('script');
+    s.defer = true;
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.setAttribute('data-cf-beacon', JSON.stringify({token: a.cloudflareBeaconToken}));
+    document.head.appendChild(s);
+  }
+  if (a.ga4MeasurementId) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(a.ga4MeasurementId);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', a.ga4MeasurementId);
+  }
+}
+
+// ============ 起動 ============
+(function init(){
+  let tab = pathToTab(location.pathname);
+  if (tab === 'tshirt' && !location.pathname.startsWith('/cheap') && !location.pathname.startsWith('/brands')) {
+    try { const saved = localStorage.getItem('tab'); if (saved && TAB_PATH[saved]) tab = saved; } catch(e){}
+  }
+  switchTab(tab, false);
+  // 保存タブを復元した場合はURLも同期 (履歴は増やさない)
+  if (location.protocol.startsWith('http') && location.pathname !== TAB_PATH[tab]) {
+    history.replaceState({tab}, '', TAB_PATH[tab]);
+  }
+  renderSupport();
+  injectAnalytics();
+
+  const pData = loadJson('data.json').then(d => { TDATA = d; renderTshirt(); })
+    .catch(e => { document.getElementById('tshirtGrid').innerHTML = `<div class="empty">データ読込エラー: ${esc(e.message)}</div>`; });
+  const pCheap = loadJson('cheap.json').then(d => {
+    CDATA = d;
+    const sel = document.getElementById('cheapSize');
+    for (const cm of d.availableSizes) {
+      const o = document.createElement('option'); o.value = cm; o.textContent = cm + 'cm';
+      sel.appendChild(o);
+    }
+    renderCheap();
+  }).catch(e => { document.getElementById('cheapGrid').innerHTML = `<div class="empty">データ読込エラー: ${esc(e.message)}</div>`; });
+  Promise.allSettled([pData, pCheap]).then(injectJsonLd);
+  loadJson('uniqlo.json').then(renderUniqlo).catch(() => {});
+  loadJson('corners.json').then(renderCorners)
+    .catch(() => { document.getElementById('otherCorners').innerHTML = '<div class="empty">セール情報は現在準備中です</div>'; });
+})();
+</script>
+</body>
+</html>

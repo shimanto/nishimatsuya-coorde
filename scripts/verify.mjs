@@ -1,0 +1,81 @@
+// ローカルでレンダリング検証: public/ を簡易サーバで配信し、
+// Playwright でタブUI (Tシャツ/¥1000以下/他ブランド) の描画を確認して
+// スクリーンショットを出力する。
+// 本番の /api/* (KV) と /cheap 等のリライトはここで模擬する。
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import { chromium } from 'playwright';
+
+const ROOT = path.resolve('public');
+const MIME = { '.html': 'text/html', '.json': 'application/json', '.js': 'text/javascript', '.css': 'text/css', '.xml': 'application/xml', '.png': 'image/png' };
+const server = http.createServer((req, res) => {
+  let f = decodeURIComponent(req.url.split('?')[0]);
+  if (f === '/' || f === '/cheap' || f === '/brands') f = '/index.html';       // _redirects 相当
+  if (f.startsWith('/api/img')) { res.writeHead(404); return res.end(); }       // 画像プロキシは本番のみ
+  if (f.startsWith('/api/')) f = f.slice(4);                                    // /api/x.json → 静的 x.json
+  const fp = path.join(ROOT, f);
+  if (!fp.startsWith(ROOT) || !fs.existsSync(fp) || fs.statSync(fp).isDirectory()) { res.writeHead(404); return res.end('nf'); }
+  res.writeHead(200, { 'content-type': MIME[path.extname(fp)] || 'application/octet-stream' });
+  fs.createReadStream(fp).pipe(res);
+});
+await new Promise((r) => server.listen(0, r));
+const port = server.address().port;
+
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 900, height: 1400 } });
+const errs = [];
+// リソース読込失敗(画像プロキシはローカル非対応で404が正常)は除外し、JSエラーのみ検知
+page.on('console', (m) => {
+  if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errs.push(m.text());
+});
+page.on('pageerror', (e) => errs.push('PAGEERR ' + e.message));
+
+await page.goto(`http://localhost:${port}/`, { waitUntil: 'networkidle' });
+await page.waitForTimeout(600);
+
+// --- タブ1: Tシャツ ---
+await page.click('#tabs button[data-tab="tshirt"]');
+await page.waitForTimeout(300);
+const cards = await page.$$eval('#tshirtGrid .card', (c) => c.length);
+const meta = await page.$eval('#tshirtMeta', (e) => e.textContent);
+console.log('Tシャツカード:', cards, '|', meta);
+await page.screenshot({ path: 'preview.png' });
+
+// --- タブ2: ¥1000以下 ---
+await page.click('#tabs button[data-tab="cheap"]');
+await page.waitForTimeout(400);
+const cheapCards = await page.$$eval('#cheapGrid .c-card', (c) => c.length);
+const cheapMeta = await page.$eval('#cheapMeta', (e) => e.textContent);
+console.log('¥1000以下カード:', cheapCards, '|', cheapMeta);
+await page.click('#cheapKind button[data-k="spats"]');
+await page.waitForTimeout(300);
+console.log('スパッツのみ:', await page.$$eval('#cheapGrid .c-card', (c) => c.length));
+await page.click('#cheapKind button[data-k="all"]');
+await page.waitForTimeout(200);
+await page.screenshot({ path: 'preview-cheap.png' });
+
+// --- タブ3: 他ブランド ---
+await page.click('#tabs button[data-tab="brands"]');
+await page.waitForTimeout(400);
+console.log('他ブランドコーナー:', await page.$$eval('.brand-corner', (c) => c.length));
+await page.screenshot({ path: 'preview-brands.png' });
+
+// --- OGP画像 (1200x630) を生成 ---
+const ogPage = await browser.newPage({ viewport: { width: 1200, height: 630 } });
+await ogPage.goto(`http://localhost:${port}/cheap`, { waitUntil: 'networkidle' });
+await ogPage.waitForTimeout(500);
+await ogPage.screenshot({ path: 'public/og.png' });
+await ogPage.close();
+console.log('OGP画像 → public/og.png');
+
+// --- 直リンク: /cheap ---
+await page.goto(`http://localhost:${port}/cheap`, { waitUntil: 'networkidle' });
+await page.waitForTimeout(500);
+const directCheap = await page.$eval('#pane-cheap', (e) => e.classList.contains('active'));
+console.log('/cheap 直リンクでcheapタブ表示:', directCheap);
+
+console.log('console errors:', errs.length ? errs : 'none');
+await browser.close();
+server.close();
+if (errs.length) process.exitCode = 1;

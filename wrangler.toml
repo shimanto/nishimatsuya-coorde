@@ -1,0 +1,9 @@
+# Cloudflare Pages プロジェクト設定 (サイト本体 + Functions)
+name = "nishimatsuya-coorde"
+pages_build_output_dir = "public"
+compatibility_date = "2026-06-01"
+
+# cron Worker (worker/) が書き込む KV を Pages Functions から読み出す
+[[kv_namespaces]]
+binding = "COORDE_KV"
+id = "cab4b705a9404b2baddc8844cfe1629c"

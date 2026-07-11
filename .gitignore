@@ -1,0 +1,27 @@
+# 依存・ツール
+node_modules/
+.wrangler/
+
+# ログ・スクリーンショット・一時成果物
+*.log
+*.png
+qr.txt
+
+# スクレイプ生データ (再生成可能・サイズ大)
+products.json
+products.verified.json
+naviplus_0.json
+
+# 生成データ (npm run build で再生成 / 本番は KV から配信)
+public/data.json
+public/cheap.json
+public/uniqlo.json
+public/corners.json
+public/feed.xml
+public/cimg/
+
+# 秘密情報 (万一ローカルに置いた場合の保険)
+.env
+.env.*
+*token*.txt
+.dev.vars
