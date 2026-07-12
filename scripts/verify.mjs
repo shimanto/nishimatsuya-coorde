@@ -82,8 +82,20 @@ await page.goto(`http://localhost:${port}/d/${firstId}`, { waitUntil: 'networkid
 await page.waitForTimeout(600);
 console.log('詳細ページ タイトル:', await page.$eval('h1', (e) => e.textContent).catch(() => '(なし)'));
 console.log('詳細ページ 帯カード:', await page.$$eval('.band', (c) => c.length),
-  '/ 色行:', await page.$$eval('table tr', (c) => c.length - 1));
+  '/ 色ブロック:', await page.$$eval('.color-block', (c) => c.length));
 await page.screenshot({ path: 'preview-detail.png', fullPage: false });
+
+// --- 詳細ページ スマホ表示 (390px) ---
+const mp = await browser.newPage({ viewport: { width: 390, height: 844 } });
+await mp.goto(`http://localhost:${port}/d/${firstId}`, { waitUntil: 'networkidle' });
+await mp.waitForTimeout(600);
+const bandRow = await mp.$$eval('.bands .band', (els) => {
+  const tops = els.map((e) => e.getBoundingClientRect().top);
+  return tops.length === 3 && Math.max(...tops) - Math.min(...tops) < 5; // 3枚が横並びか
+});
+console.log('スマホ: 帯3枚が横並び:', bandRow);
+await mp.screenshot({ path: 'preview-detail-mobile.png', fullPage: false });
+await mp.close();
 
 console.log('console errors:', errs.length ? errs : 'none');
 await browser.close();

@@ -39,9 +39,18 @@
   .updated{font-size:.68rem;color:var(--sub);letter-spacing:.04em}
   h2{font-size:1.02rem;font-family:var(--serif);font-weight:600;letter-spacing:.1em;margin:38px 0 14px;
      padding-left:12px;border-left:3px solid var(--gold)}
-  /* 帯別 代表画像 */
-  .bands{display:grid;grid-template-columns:1fr;gap:14px}
-  @media(min-width:680px){.bands{grid-template-columns:repeat(3,1fr)}}
+  /* 帯別 代表画像 (スマホでも3枚横並び・コンパクト表示) */
+  .bands{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  @media(min-width:680px){.bands{gap:14px}}
+  @media(max-width:679px){
+    .band-tag{padding:7px 8px 5px;flex-direction:column;gap:1px;align-items:flex-start}
+    .band-no{font-size:.7rem} .band-range{font-size:.52rem}
+    .band-body{padding:7px 8px 10px;font-size:.58rem}
+    .band-sizes{gap:3px;margin:3px 0 6px}
+    .sz{font-size:.54rem;padding:1px 4px}
+    .band-link{font-size:.58rem;padding:3px 7px}
+    .band .noneMsg{padding:18px 6px;font-size:.58rem}
+  }
   .band{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
   .band:hover{box-shadow:0 10px 26px rgba(62,50,30,.1);border-color:var(--gold-l)}
   .band.none{opacity:.55}
@@ -58,16 +67,29 @@
      border:1px solid var(--gold-l);border-radius:2px;padding:4px 12px;transition:.2s}
   .band-link:hover{background:var(--goldbg)}
   .band .noneMsg{padding:30px 14px;text-align:center;font-size:.72rem;color:var(--outink);font-family:var(--serif);letter-spacing:.1em}
-  /* 色×帯マトリクス */
+  /* カラー別 × サイズ別 (トップページと同じ数字セル方式) */
+  .color-block{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:10px}
+  .color-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+  .color-name{font-weight:700;font-family:var(--serif);font-size:.98rem;letter-spacing:.04em}
+  .size-row{display:flex;gap:3px}
+  .size-cell{flex:1 1 0;min-width:0;text-align:center;border-radius:3px;padding:6px 1px;
+    border:1px solid var(--line);background:var(--bg);color:var(--outink);text-decoration:none}
+  .size-cell.on{background:var(--ok);border-color:var(--okline);color:#7c6335;font-weight:700;cursor:pointer;transition:.18s}
+  .size-cell.on:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+  .size-cm{font-size:.68rem;font-weight:700;display:block;line-height:1.15}
+  .size-tag{font-size:.52rem;display:block;line-height:1.2;white-space:nowrap}
+  @media(min-width:520px){
+    .size-row{gap:5px} .size-cell{padding:7px 3px;border-radius:4px}
+    .size-cm{font-size:.8rem} .size-tag{font-size:.6rem}
+  }
+  /* 帯単位フォールバック用の簡易テーブル */
   .tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:6px}
-  table{border-collapse:collapse;width:100%;font-size:.78rem;min-width:560px}
+  table{border-collapse:collapse;width:100%;font-size:.78rem;min-width:480px}
   th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:center;vertical-align:middle}
   th{font-size:.66rem;color:var(--sub);font-weight:600;letter-spacing:.08em;background:var(--goldbg)}
   th .rng{display:block;font-size:.6rem;font-weight:500;letter-spacing:.04em}
   tr:last-child td{border-bottom:none}
   td.color{text-align:left;white-space:nowrap;font-weight:600}
-  .swatch{width:34px;height:34px;border-radius:3px;object-fit:cover;border:1px solid var(--line);
-          vertical-align:middle;margin-right:9px;background:var(--out)}
   td .on{display:inline-block;width:26px;height:26px;line-height:24px;border-radius:50%;background:var(--ok);
      border:1px solid var(--okline);color:#7c6335;font-weight:700;text-decoration:none;transition:.15s;font-size:.8rem}
   td .on:hover{background:var(--gold);border-color:var(--gold);color:#fff}
@@ -114,9 +136,6 @@ const BANDS = [
   { front:'KIDS',   no:'②', label:'キッズ',   range:'100〜130cm'},
   { front:'SCHOOL', no:'③', label:'スクール', range:'140〜160cm'},
 ];
-const IMG_BASE = 'https://www.24028-net.jp/client_info/N24028/itemimage/';
-const colorImg = (hinban, code) => code ? `${IMG_BASE}${hinban}/${String(hinban).slice(2)}-${code}.jpg` : '';
-
 function rakutenLink(q){
   const t = 'https://search.rakuten.co.jp/search/mall/' + encodeURIComponent(q) + '/';
   const id = CFG.affiliate && CFG.affiliate.rakutenAffiliateId;
@@ -168,7 +187,7 @@ function render(design, generatedAt){
         bandHasSku = true;
         const row = addRow(name);
         row.bands[b.front] = { url: p.url };
-        for (const cm of (v.sizes || [])) if (!row.sizes[cm]) row.sizes[cm] = { url: p.url };
+        for (const cm of (v.sizes || [])) if (!row.sizes[cm]) row.sizes[cm] = { url: p.url, front: b.front };
         if (!row.code && v.code) { row.code = v.code; row.hinban = p.hinban; }
       }
     }
@@ -211,33 +230,26 @@ function render(design, generatedAt){
       : covPair ? '<span class="cov pair">○ 80〜130 そろう</span>'
       : `<span class="cov part">${inBands.length}帯のみ</span>`;
   };
-  const swatchTd = (row) => {
-    const sw = colorImg(row.hinban, row.code);
-    return `<td class="color">${sw ? `<img class="swatch" src="${esc(sw)}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}${esc(row.name)}</td>`;
-  };
+  const FRONT_S = { BABY: 'ベ', KIDS: 'キ', SCHOOL: 'ス' };
 
-  let tableHtml, noteHtml;
+  let matrixHtml, noteHtml;
   if (hasSku) {
-    // ===== 個別サイズ列 (色×サイズのSKU実データ) =====
-    const cols = active.map(b => ({ ...b, sizes: b.data.offered || b.data.sizes })); // 展開サイズを列に(売切列も見せる)
-    const colCount = cols.reduce((s, c) => s + c.sizes.length, 0);
-    const head1 = `<tr><th rowspan="2" style="text-align:left">カラー</th>` +
-      cols.map(c => `<th colspan="${c.sizes.length}">${c.no} ${c.label}<span class="rng">${c.range}</span></th>`).join('') +
-      `<th rowspan="2">80〜160の<br>そろい</th></tr>`;
-    const head2 = `<tr>` + cols.map(c => c.sizes.map(s => `<th>${s}</th>`).join('')).join('') + `</tr>`;
-    const rows = colorRows.map(row => {
-      const cells = cols.map(c => c.sizes.map(s => {
+    // ===== トップページと同じ「サイズ数字セル」方式 (色ごとに1行) =====
+    const axis = [...new Set(active.flatMap(b => b.data.offered || b.data.sizes))].sort((a, b) => a - b);
+    matrixHtml = colorRows.map(row => {
+      const cells = axis.map(s => {
         const hit = row.sizes[s];
-        if (hit) return `<td><a class="on" href="${esc(hit.url)}" target="_blank" rel="noopener" title="${esc(row.name)} ${s}cm 在庫あり">●</a></td>`;
-        const band = row.bands[c.front];
-        if (band && band.bandOnly) return `<td><span class="off" title="この帯のサイズ別データ未取得">?</span></td>`;
-        return `<td><span class="off">–</span></td>`;
-      }).join('')).join('');
-      return `<tr>${swatchTd(row)}${cells}<td>${covOf(row)}</td></tr>`;
-    }).join('');
-    tableHtml = head1 + head2 + (rows || `<tr><td colspan="${colCount + 2}" style="color:var(--sub)">カラー情報を取得できませんでした</td></tr>`);
-    noteHtml = `● = そのカラー×サイズの組み合わせが在庫あり（西松屋検索データのSKU単位・毎朝8時更新）。
-      – = 在庫なしまたは展開なし。● をタップすると該当サイズ帯の商品ページへ移動します。
+        if (hit) return `<a class="size-cell on" href="${esc(hit.url)}" target="_blank" rel="noopener" title="${esc(row.name)} ${s}cm 在庫あり">
+          <span class="size-cm">${s}</span><span class="size-tag">${FRONT_S[hit.front] || '有'}</span></a>`;
+        return `<div class="size-cell" title="${esc(row.name)} ${s}cm は在庫なし/展開なし"><span class="size-cm">${s}</span><span class="size-tag">–</span></div>`;
+      }).join('');
+      return `<div class="color-block">
+        <div class="color-head"><span class="color-name">${esc(row.name)}</span>${covOf(row)}</div>
+        <div class="size-row">${cells}</div>
+      </div>`;
+    }).join('') || '<div class="empty">カラー情報を取得できませんでした</div>';
+    noteHtml = `色付きセル（ベ=ベビー/キ=キッズ/ス=スクール）= そのカラー×サイズが在庫あり。タップで該当サイズ帯の商品ページへ。
+      グレーの「–」= 在庫なしまたは展開なし。西松屋検索データのSKU単位・毎朝8時更新。
       「◎ 80〜160 そろう」= 3つのサイズ帯すべてで展開中のカラーです。ご購入直前の最終在庫は商品ページでご確認ください。`;
   } else {
     // ===== 帯単位フォールバック (旧データ) =====
@@ -247,12 +259,13 @@ function render(design, generatedAt){
         if (hit) return `<td><a class="on" href="${esc(hit.url)}" target="_blank" rel="noopener" title="${esc(row.name)} / ${b.label} ${b.range} 在庫あり">●</a></td>`;
         return `<td><span class="off">–</span></td>`;
       }).join('');
-      return `<tr>${swatchTd(row)}${cells}<td>${covOf(row)}</td></tr>`;
+      return `<tr><td class="color">${esc(row.name)}</td>${cells}<td>${covOf(row)}</td></tr>`;
     }).join('');
-    tableHtml = `<tr><th style="text-align:left">カラー</th>` +
+    matrixHtml = `<div class="tblwrap"><table><tr><th style="text-align:left">カラー</th>` +
       BANDS.map(b=>`<th>${b.no} ${b.label}<span class="rng">${b.range}</span></th>`).join('') +
       `<th>80〜160の<br>そろい</th></tr>` +
-      (rows || '<tr><td colspan="5" style="color:var(--sub)">カラー情報を取得できませんでした</td></tr>');
+      (rows || '<tr><td colspan="5" style="color:var(--sub)">カラー情報を取得できませんでした</td></tr>') +
+      `</table></div>`;
     noteHtml = `● = そのカラーがサイズ帯（品番）内に在庫あり。最終在庫は ● をタップして商品ページでご確認ください。`;
   }
 
@@ -273,9 +286,7 @@ function render(design, generatedAt){
     <div class="bands">${bandCards}</div>
 
     <h2>カラー別 × サイズ別 在庫一覧</h2>
-    <div class="tblwrap"><table>
-      ${tableHtml}
-    </table></div>
+    ${matrixHtml}
     <p class="note">${noteHtml}</p>
 
     <div class="aff">
