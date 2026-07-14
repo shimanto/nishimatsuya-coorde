@@ -1,7 +1,7 @@
 {
-  "name": "nishimatsuya-coorde",
-  "version": "2.0.0",
-  "description": "西松屋オンラインの在庫から「きょうだいお揃いTシャツ」と「税込¥1,000以下パンツ・スパッツ」を毎朝8時にCloudflare cronで自動更新・公開",
+  "name": "kyoudai-coorde",
+  "version": "2.1.0",
+  "description": "西松屋オンラインの公開在庫データから「きょうだいお揃いコーデ」と「税込¥1,000以下ボトムス」を毎朝8時にCloudflareで自動更新・公開する非公式サイト",
   "scripts": {
     "build": "node scripts/build-local.mjs",
     "verify": "node scripts/verify.mjs",

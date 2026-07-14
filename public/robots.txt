@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/img
 
-Sitemap: https://nishimatsuya-coorde.pages.dev/sitemap.xml
+Sitemap: https://kyoudai-coorde.pages.dev/sitemap.xml

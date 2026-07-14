@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>仕様解説｜システム構成と再発防止 — 西松屋きょうだいお揃いコーデ</title>
+<title>仕様解説｜システム構成と再発防止 — きょうだいお揃いコーデ</title>
 <meta name="description" content="2026-07-08のIP制限インシデントを受けたv2アーキテクチャの解説。ローカルPCから西松屋本体へのアクセスをゼロにし、更新をCloudflare(Durable Object Alarm + Workers KV + Pages Functions)へ完全移設した構成図と再発防止の根拠、毎日の実行証跡。">
-<link rel="canonical" href="https://nishimatsuya-coorde.pages.dev/docs/">
+<link rel="canonical" href="https://kyoudai-coorde.pages.dev/docs/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
 <style>
   :root{
@@ -144,7 +144,7 @@
       <p class="dsub">2026-07-11〜。ローカルPCと本体サイトを経路から排除</p>
       <div class="node cf"><b>⏰ Durable Object Alarm（CoordeScheduler）</b><span class="in">毎朝 23:00 UTC = 8:00 JST に自動発火。PC不要</span></div>
       <div class="arrow">↓ Worker がパイプライン実行（未完なら90秒後に自動継続）</div>
-      <div class="node cf"><b>⚙️ Worker: nishimatsuya-coorde-cron</b><span class="in">fetch予算40/回でハードストップ・各fetch15秒タイムアウト</span></div>
+      <div class="node cf"><b>⚙️ Worker: kyoudai-coorde-cron</b><span class="in">fetch予算40/回でハードストップ・各fetch15秒タイムアウト</span></div>
       <div class="arrow good">↓ 検索API のみ 〜60リクエスト/日・150ms間隔 <span class="o">✓ 本体サイトへは0件</span></div>
       <div class="node safe"><b>検索API nishimatsuya-f-s.snva.jp（NaviPlus）</b><span class="in">西松屋本体とは別ホスト・別基盤。IP制限発動中も200を返し続けた実績</span></div>
       <div class="arrow">↓ 生成JSONを保存（失敗日は前日分を温存 = last-good）</div>
@@ -166,7 +166,7 @@
     <tr><td>配信</td><td>Cloudflare Pages（静的のみ）</td><td class="ok">Pages + <b>Pages Functions</b>（/api/* をKVから配信、画像プロキシ、RSS）＋ Cache API</td></tr>
     <tr><td>フロント</td><td class="ng">単一リスト（Tシャツのみ）</td><td class="ok">3タブ（お揃いTシャツ / ¥1,000以下パンツ・レギンス / 他ブランド）+ SEO(JSON-LD/OGP/sitemap) + アフィリエイト基盤</td></tr>
     <tr><td>監視</td><td class="ng">deploy.log（ローカル。誰も見ず4日間障害に気づけなかった）</td><td class="ok">公開 <a href="/api/status.json">/api/status.json</a>（毎tick更新・ステップ別成否とfetch数）</td></tr>
-    <tr><td>コード管理</td><td class="ng">なし（ローカルのみ）</td><td class="ok"><a href="https://github.com/shimanto/nishimatsuya-coorde" rel="noopener" target="_blank">GitHub公開リポジトリ</a>（シークレット非含有）</td></tr>
+    <tr><td>コード管理</td><td class="ng">なし（ローカルのみ）</td><td class="ok"><a href="https://github.com/shimanto/kyoudai-coorde" rel="noopener" target="_blank">GitHub公開リポジトリ</a>（シークレット非含有）</td></tr>
   </table>
   </div>
 
@@ -226,7 +226,7 @@
     📊 実行ステータス: <a href="/api/status.json">/api/status.json</a>／
     📦 データ鮮度: <a href="/api/cheap.json">/api/cheap.json</a> の <code>generatedAt</code>／
     📡 RSS: <a href="/api/feed.xml">/api/feed.xml</a>／
-    💻 全ソースコード: <a href="https://github.com/shimanto/nishimatsuya-coorde" target="_blank" rel="noopener">github.com/shimanto/nishimatsuya-coorde</a>
+    💻 全ソースコード: <a href="https://github.com/shimanto/kyoudai-coorde" target="_blank" rel="noopener">github.com/shimanto/kyoudai-coorde</a>
   </p>
 
 </div>

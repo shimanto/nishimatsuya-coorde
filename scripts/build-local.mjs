@@ -8,7 +8,7 @@ import {
   fetchSkuMatrix, applySkuMatrices,
 } from '../src/pipeline.mjs';
 
-const SITE_URL = 'https://nishimatsuya-coorde.pages.dev/';
+const SITE_URL = 'https://kyoudai-coorde.pages.dev/';
 const f = (...args) => fetch(...args);
 const save = (name, content) => {
   fs.writeFileSync(new URL('../public/' + name, import.meta.url),

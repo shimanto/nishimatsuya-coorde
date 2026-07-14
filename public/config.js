@@ -2,8 +2,8 @@
 // オープンソースリポジトリにはプレースホルダのまま置く。
 // 実際の ID/URL は各サービスの管理画面で取得して書き換える (docs/MONETIZE.md 参照)。
 window.SITE_CONFIG = {
-  siteUrl: 'https://nishimatsuya-coorde.pages.dev/',
-  siteName: '西松屋 きょうだいお揃いコーデ＆¥1,000以下パンツ・スパッツ',
+  siteUrl: 'https://kyoudai-coorde.pages.dev/',
+  siteName: 'きょうだいお揃いコーデ【非公式】＆¥1,000以下パンツ・レギンス',
 
   // --- アフィリエイト (空なら通常の検索リンクとして動作) ---
   affiliate: {

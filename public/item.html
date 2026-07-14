@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>アイテム詳細｜西松屋 きょうだいお揃いコーデ</title>
+<title>アイテム詳細｜きょうだいお揃いコーデ【非公式】</title>
 <meta name="description" content="サイズ帯別（80〜95・100〜130・140〜160cm）の代表画像と、カラー別のサイズ帯在庫一覧。毎朝8時自動更新。">
-<link rel="canonical" href="https://nishimatsuya-coorde.pages.dev/">
+<link rel="canonical" href="https://kyoudai-coorde.pages.dev/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
 <script src="/config.js"></script>
 <style>
@@ -115,14 +115,15 @@
 <header>
   <div class="hrow">
     <a class="back" href="/">← 一覧へ戻る</a>
-    <div class="brandmark">NISHIMATSUYA COORDE</div>
+    <div class="brandmark">KYOUDAI COORDE</div>
     <span style="width:86px"></span>
   </div>
 </header>
 <div class="wrap" id="app"><div class="empty">読み込み中…</div></div>
 <footer>
-  <div class="foot-brand">NISHIMATSUYA COORDE</div>
-  データ出典: <a href="https://www.24028-net.jp/" target="_blank" rel="noopener">西松屋オンラインストア</a>（取得時点の情報。購入前に商品ページでご確認ください）／
+  <div class="foot-brand">KYOUDAI COORDE</div>
+  データ出典: <a href="https://www.24028-net.jp/" target="_blank" rel="noopener">西松屋オンラインストア</a>（取得時点の情報。購入前に商品ページでご確認ください）<br>
+  本サイトは株式会社西松屋チェーンとは一切関係のない非公式の個人プロジェクトです。／
   <a href="/">一覧へ戻る</a> ／ <a href="/docs/">仕様解説</a>
 </footer>
 
@@ -272,7 +273,7 @@ function render(design, generatedAt){
     noteHtml = `● = そのカラーがサイズ帯（品番）内に在庫あり。最終在庫は ● をタップして商品ページでご確認ください。`;
   }
 
-  document.title = `${design.title}｜サイズ帯・カラー別在庫 — 西松屋きょうだいお揃いコーデ`;
+  document.title = `${design.title}｜サイズ帯・カラー別在庫 — きょうだいお揃いコーデ`;
   const q = '西松屋 ' + design.title;
   document.getElementById('app').innerHTML = `
     <div class="badges">

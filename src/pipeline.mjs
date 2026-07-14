@@ -1,4 +1,4 @@
-// nishimatsuya-coorde 共有パイプライン (Node / Cloudflare Worker 両対応)
+// kyoudai-coorde 共有パイプライン (Node / Cloudflare Worker 両対応)
 //
 // データソースは西松屋の検索基盤 NaviPlus (nishimatsuya-f-s.snva.jp) の
 // json_grouping API のみ。www.24028-net.jp 本体の在庫確認ページ
@@ -715,7 +715,7 @@ export function buildFeedXml(tshirtData, cheapData, siteUrl) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
 <channel>
-  <title>西松屋 きょうだいお揃いコーデ &amp; ¥1,000以下パンツ・レギンス</title>
+  <title>きょうだいお揃いコーデ &amp; ¥1,000以下パンツ・レギンス</title>
   <link>${esc(siteUrl)}</link>
   <description>西松屋オンラインの在庫から毎朝8時に自動更新。80〜160cmお揃いTシャツと¥1,000以下の激安パンツ・レギンス。</description>
   <language>ja</language>

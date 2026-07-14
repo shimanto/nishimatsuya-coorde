@@ -6,7 +6,7 @@
 #
 # デプロイ後に1回だけ: POST https://<worker>/init?token=<ADMIN_TOKEN> で Alarm を起動。
 # ADMIN_TOKEN は `wrangler secret put ADMIN_TOKEN -c worker/wrangler.toml` で設定。
-name = "nishimatsuya-coorde-cron"
+name = "kyoudai-coorde-cron"
 main = "index.mjs"
 compatibility_date = "2026-06-01"
 

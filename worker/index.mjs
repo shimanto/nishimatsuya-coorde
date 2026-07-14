@@ -1,4 +1,4 @@
-// nishimatsuya-coorde 更新 Worker (Durable Object Alarm 駆動)
+// kyoudai-coorde 更新 Worker (Durable Object Alarm 駆動)
 //
 // 毎朝 8:00 JST (= 23:00 UTC) に Durable Object の Alarm でデータ更新パイプラインを
 // 実行し、生成 JSON を KV に保存する。サイト (Cloudflare Pages) は Pages Functions
@@ -26,7 +26,7 @@ import {
   fetchSkuMatrix, applySkuMatrices,
 } from '../src/pipeline.mjs';
 
-const SITE_URL = 'https://nishimatsuya-coorde.pages.dev/';
+const SITE_URL = 'https://kyoudai-coorde.pages.dev/';
 const RUN_HOUR_UTC = 23;              // 23:00 UTC = 8:00 JST
 const CONTINUE_DELAY_MS = 90 * 1000;  // 未完了時の継続 Alarm 間隔
 const MAX_ATTEMPTS = 2;               // ステップ再試行回数 (超えたらスキップ)

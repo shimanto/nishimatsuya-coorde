@@ -26,3 +26,7 @@ public/cimg/
 .env.*
 *token*.txt
 .dev.vars
+
+# 内部戦略文書 (公開リポジトリに含めない)
+docs/monetization-*
+docs/note-sns-plan-*

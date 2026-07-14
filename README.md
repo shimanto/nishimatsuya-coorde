@@ -1,4 +1,4 @@
-# nishimatsuya-coorde｜西松屋 きょうだいお揃いコーデ & ¥1,000以下ボトムス
+# kyoudai-coorde｜きょうだいお揃いコーデ & ¥1,000以下ボトムス
 
 西松屋オンラインストアの**在庫データ**から、
 
@@ -8,7 +8,7 @@
 
 を毎朝8時(JST)に **Cloudflare cron で全自動更新** して公開する静的サイト。
 
-🌐 公開URL: https://nishimatsuya-coorde.pages.dev （/cheap = ¥1,000以下タブ直リンク）
+🌐 公開URL: https://kyoudai-coorde.pages.dev （/cheap = ¥1,000以下タブ直リンク）
 
 ## アーキテクチャ
 
@@ -70,9 +70,9 @@ npx wrangler secret put ADMIN_TOKEN -c worker/wrangler.toml
 
 ```bash
 # 1ステップずつ進める (無料プラン相当の予算で)
-curl -X POST "https://nishimatsuya-coorde-cron.<subdomain>.workers.dev/tick?token=<ADMIN_TOKEN>"
+curl -X POST "https://kyoudai-coorde-cron.<subdomain>.workers.dev/tick?token=<ADMIN_TOKEN>"
 # 実行状況
-curl "https://nishimatsuya-coorde-cron.<subdomain>.workers.dev/status"
+curl "https://kyoudai-coorde-cron.<subdomain>.workers.dev/status"
 ```
 
 ## 収益化・計測
