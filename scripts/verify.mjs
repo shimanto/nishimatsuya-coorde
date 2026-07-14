@@ -75,13 +75,8 @@ await page.waitForTimeout(400);
 console.log('他ブランドコーナー:', await page.$$eval('.brand-corner', (c) => c.length));
 await page.screenshot({ path: 'preview-brands.png' });
 
-// --- OGP画像 (1200x630) を生成 ---
-const ogPage = await browser.newPage({ viewport: { width: 1200, height: 630 } });
-await ogPage.goto(`http://localhost:${port}/cheap`, { waitUntil: 'networkidle' });
-await ogPage.waitForTimeout(500);
-await ogPage.screenshot({ path: 'public/og.png' });
-await ogPage.close();
-console.log('OGP画像 → public/og.png');
+// OGP画像はブランド版の静的アセット (public/og.png)。ここでは上書きしない。
+// 再生成する場合は scratchpad の brand-canvases.html (#og) から書き出す。
 
 // --- 直リンク: /cheap ---
 await page.goto(`http://localhost:${port}/cheap`, { waitUntil: 'networkidle' });

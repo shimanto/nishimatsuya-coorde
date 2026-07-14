@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- きょうだいお揃いコーデ ブランドマーク: 大中小3枚のTシャツ(=きょうだい) -->
+  <rect width="100" height="100" rx="20" fill="#f7f4ee"/>
+  <rect x="3" y="3" width="94" height="94" rx="17" fill="none" stroke="#cdb489" stroke-width="2.5"/>
+  <g transform="translate(4,32) scale(0.48)">
+    <path d="M32 6 L42 2 Q50 10 58 2 L68 6 L92 18 L84 38 L70 32 L70 90 Q50 96 30 90 L30 32 L16 38 L8 18 Z"
+          fill="#f3ecdd" stroke="#a98a54" stroke-width="7" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(48,45) scale(0.35)">
+    <path d="M32 6 L42 2 Q50 10 58 2 L68 6 L92 18 L84 38 L70 32 L70 90 Q50 96 30 90 L30 32 L16 38 L8 18 Z"
+          fill="#fffdfa" stroke="#84937a" stroke-width="8" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(74,55) scale(0.25)">
+    <path d="M32 6 L42 2 Q50 10 58 2 L68 6 L92 18 L84 38 L70 32 L70 90 Q50 96 30 90 L30 32 L16 38 L8 18 Z"
+          fill="#fffdfa" stroke="#b08287" stroke-width="9" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -30,3 +30,8 @@ public/cimg/
 # 内部戦略文書 (公開リポジトリに含めない)
 docs/monetization-*
 docs/note-sns-plan-*
+docs/brand-kit-*
+
+# ブランド固定アセットはgit管理する (*.png除外の例外)
+!public/og.png
+!public/icon-180.png

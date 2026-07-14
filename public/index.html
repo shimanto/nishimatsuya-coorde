@@ -7,7 +7,8 @@
 <meta name="description" content="西松屋オンラインストアの公開在庫データから毎朝8時に自動更新する非公式サイト。ベビー〜ジュニア(80〜160cm)を同じデザインで揃えられるTシャツと、税込¥1,000以下の激安パンツ・レギンスを一覧比較。">
 <link rel="canonical" href="https://kyoudai-coorde.pages.dev/">
 <link rel="alternate" type="application/rss+xml" title="毎朝8時の更新フィード" href="/api/feed.xml">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/icon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="きょうだいお揃いコーデ【非公式】＆¥1,000以下パンツ・レギンス">
 <meta property="og:description" content="毎朝8時自動更新。80〜160cmお揃いTシャツと税込¥1,000以下の激安ボトムスを在庫サイズ付きで一覧。">
@@ -30,6 +31,8 @@
   header{background:var(--bg);color:var(--ink);padding:34px 16px 0;text-align:center;
          border-top:4px solid var(--gold)}
   .eyebrow{margin:0 0 10px;font-size:.64rem;letter-spacing:.42em;color:var(--gold);font-weight:600;text-indent:.42em}
+  .brand-tees{display:flex;justify-content:center;align-items:flex-end;gap:8px;margin:0 0 14px}
+  .brand-tees svg{display:block}
   header h1{margin:0;font-size:1.65rem;letter-spacing:.14em;font-family:var(--serif);font-weight:600}
   header .lead{margin:12px auto 18px;font-size:.8rem;color:var(--sub);max-width:640px;letter-spacing:.05em}
   header .lead b{color:var(--ink);font-weight:600}
@@ -176,6 +179,11 @@
 <body>
 <header>
   <p class="eyebrow">CURATED KIDS' WARDROBE ／ DAILY 8:00 UPDATE</p>
+  <div class="brand-tees" aria-hidden="true">
+    <svg width="42" height="40" viewBox="0 0 100 96"><path d="M32 6 L42 2 Q50 10 58 2 L68 6 L92 18 L84 38 L70 32 L70 90 Q50 96 30 90 L30 32 L16 38 L8 18 Z" fill="#f3ecdd" stroke="#a98a54" stroke-width="5" stroke-linejoin="round"/></svg>
+    <svg width="30" height="29" viewBox="0 0 100 96"><path d="M32 6 L42 2 Q50 10 58 2 L68 6 L92 18 L84 38 L70 32 L70 90 Q50 96 30 90 L30 32 L16 38 L8 18 Z" fill="#fffdfa" stroke="#84937a" stroke-width="5.5" stroke-linejoin="round"/></svg>
+    <svg width="21" height="20" viewBox="0 0 100 96"><path d="M32 6 L42 2 Q50 10 58 2 L68 6 L92 18 L84 38 L70 32 L70 90 Q50 96 30 90 L30 32 L16 38 L8 18 Z" fill="#fffdfa" stroke="#b08287" stroke-width="6" stroke-linejoin="round"/></svg>
+  </div>
   <h1>きょうだいお揃いコーデ</h1>
   <p class="lead">西松屋オンラインストアの公開在庫データをもとにした<b>非公式の個人サイト</b>です（株式会社西松屋チェーンとは関係ありません）。同じデザインを 80〜160cm で。きょうだいで揃う一着と、<b>税込 ¥1,000 以下のパンツ・レギンス</b>を毎朝すべて見立ててお届けします。</p>
   <div class="share">
